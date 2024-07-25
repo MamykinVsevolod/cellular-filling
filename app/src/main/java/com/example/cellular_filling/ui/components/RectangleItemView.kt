@@ -84,12 +84,13 @@ fun RectangleItemView(rectangle: RectangleItem) {
                     .padding(start = 16.dp)
                     .size(40.dp)
                     .clip(shape = CircleShape)
-                    .background(getColorForType(type = rectangle.type))
+                    .background(getColorForType(type = rectangle.type)),
+                    contentAlignment = Alignment.Center
             ) {
                 Image(
                     painter = getPictureForType(type = rectangle.type),
                     contentDescription = "Picture",
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier.size(20.dp)
                 )
             }
             Column(
@@ -110,7 +111,7 @@ fun PreviewRectangleItemView() {
     RectangleItemView(
         rectangle = RectangleItem(
             id = 1,
-            type = RectangleType.LIFE
+            type = RectangleType.DEAD
         )
     )
 }
