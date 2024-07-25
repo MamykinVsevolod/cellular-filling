@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Cellular-filling</string>
+    <string name="dead_title">Мёртвая</string>
+    <string name="dead_text">или прикидывается</string>
+
+    <string name="alive_title">Живая</string>
+    <string name="alive_text">и шевелится!</string>
+
+    <string name="life_title">Жизнь</string>
+    <string name="life_text">Ку-ку!</string>
+
+    <string name="death_title">Смерть</string>
+    <string name="death_text">Конец…</string>
+
+    <string name="main_title">Клеточное наполнение</string>
+    <string name="button">СОТВОРИТЬ</string>
 </resources>

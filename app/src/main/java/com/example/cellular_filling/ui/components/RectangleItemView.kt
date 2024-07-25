@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.cellular_filling.R
@@ -66,6 +67,31 @@ fun getPictureForType(type: RectangleType): Painter {
 }
 
 @Composable
+fun getTextForType(type: RectangleType): Pair<String, String> {
+    return when (type) {
+        RectangleType.ALIVE -> Pair(
+            stringResource(R.string.alive_title),
+            stringResource(R.string.alive_text)
+        )
+
+        RectangleType.DEAD -> Pair(
+            stringResource(R.string.dead_title),
+            stringResource(R.string.dead_text)
+        )
+
+        RectangleType.LIFE -> Pair(
+            stringResource(R.string.life_title),
+            stringResource(R.string.life_text)
+        )
+
+        RectangleType.DEATH -> Pair(
+            stringResource(R.string.death_title),
+            stringResource(R.string.death_text)
+        )
+    }
+}
+
+@Composable
 fun RectangleItemView(rectangle: RectangleItem) {
     Box(
         modifier = Modifier
@@ -75,8 +101,8 @@ fun RectangleItemView(rectangle: RectangleItem) {
             .clip(
                 RoundedCornerShape(8.dp)
             )
-            .background(color = Color.Black),
-            contentAlignment = Alignment.CenterStart
+            .background(color = Color.White),
+        contentAlignment = Alignment.CenterStart
     ) {
         Row {
             Box(
@@ -84,11 +110,11 @@ fun RectangleItemView(rectangle: RectangleItem) {
                     .padding(start = 16.dp)
                     .size(40.dp)
                     .clip(shape = CircleShape)
-                    .background(getColorForType(type = rectangle.type)),
-                    contentAlignment = Alignment.Center
+                    .background(getColorForType(rectangle.type)),
+                contentAlignment = Alignment.Center
             ) {
                 Image(
-                    painter = getPictureForType(type = rectangle.type),
+                    painter = getPictureForType(rectangle.type),
                     contentDescription = "Picture",
                     modifier = Modifier.size(20.dp)
                 )
@@ -97,8 +123,9 @@ fun RectangleItemView(rectangle: RectangleItem) {
                 modifier = Modifier
                     .padding(start = 16.dp)
             ) {
-                Text(text = "", style = Typography.bodyMedium)
-                Text(text = "", style = Typography.bodySmall)
+                val (title, text) = getTextForType(rectangle.type)
+                Text(text = title, style = Typography.bodyMedium)
+                Text(text = text, style = Typography.bodySmall)
             }
         }
     }
