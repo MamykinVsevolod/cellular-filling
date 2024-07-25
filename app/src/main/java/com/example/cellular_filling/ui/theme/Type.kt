@@ -9,8 +9,8 @@ import androidx.compose.ui.unit.sp
 import com.example.cellular_filling.R
 
 val Roboto = FontFamily(
-    Font(R.font.roboto_regular, FontWeight.Normal),
-    Font(R.font.roboto_medium, FontWeight.Medium)
+    Font(R.font.roboto_regular_ttf, FontWeight.Normal),
+    Font(R.font.roboto_medium_ttf, FontWeight.Medium)
 )
 // Set of Material typography styles to start with
 val Typography = Typography(

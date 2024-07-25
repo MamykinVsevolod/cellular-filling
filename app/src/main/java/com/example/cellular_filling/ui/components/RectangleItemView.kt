@@ -5,10 +5,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -16,6 +18,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.example.cellular_filling.R
 import com.example.cellular_filling.model.RectangleItem
@@ -28,6 +32,7 @@ import com.example.cellular_filling.ui.theme.ColorDeath1
 import com.example.cellular_filling.ui.theme.ColorDeath2
 import com.example.cellular_filling.ui.theme.ColorLife1
 import com.example.cellular_filling.ui.theme.ColorLife2
+import com.example.cellular_filling.ui.theme.Typography
 
 @Composable
 fun getColorForType(type: RectangleType): Brush {
@@ -63,8 +68,9 @@ fun getPictureForType(type: RectangleType): Painter {
 fun RectangleItemView(rectangle: RectangleItem) {
     Row(
         modifier = Modifier
+            .fillMaxWidth()
             .padding(start = 16.dp, end = 16.dp)
-            .background(color = Color.White)
+            .background(color = Color.Black)
             .clip(
                 RoundedCornerShape(
                     topStart = 8.dp,
@@ -89,7 +95,19 @@ fun RectangleItemView(rectangle: RectangleItem) {
         }
         Column(modifier = Modifier
             .padding(start = 16.dp)){
-
+            Text(text = "", style = Typography.bodyMedium)
+            Text(text = "", style = Typography.bodySmall)
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewRectangleItemView() {
+    RectangleItemView(
+        rectangle = RectangleItem(
+            id = 1,
+            type = RectangleType.ALIVE
+        )
+    )
 }
