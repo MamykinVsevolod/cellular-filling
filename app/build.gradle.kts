@@ -50,6 +50,7 @@ android {
 }
 
 dependencies {
+    implementation("com.google.accompanist:accompanist-animation:0.33.2-alpha")
     implementation("androidx.compose.ui:ui-text:1.0.0")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")

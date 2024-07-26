@@ -2,9 +2,11 @@ package com.example.cellular_filling.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -40,7 +42,7 @@ fun RectangleItemView(rectangle: RectangleItem) {
             .background(color = Color.White),
         contentAlignment = Alignment.CenterStart
     ) {
-        Row {
+        Row (verticalAlignment = Alignment.CenterVertically){
             Box(
                 modifier = Modifier
                     .padding(start = 16.dp)
@@ -52,12 +54,15 @@ fun RectangleItemView(rectangle: RectangleItem) {
                 Image(
                     painter = getPictureForType(rectangle.type),
                     contentDescription = "Picture",
-                    modifier = Modifier.size(20.dp)
+                    modifier = Modifier.size(20.dp),
+                    alignment = Alignment.Center
                 )
             }
             Column(
                 modifier = Modifier
-                    .padding(start = 16.dp)
+                    //.fillMaxHeight()
+                    .padding(start = 16.dp),
+                verticalArrangement = Arrangement.Center
             ) {
                 val (title, text) = getTextForType(rectangle.type)
                 Text(text = title, style = Typography.bodyMedium)
