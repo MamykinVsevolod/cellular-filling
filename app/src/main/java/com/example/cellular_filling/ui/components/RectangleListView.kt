@@ -22,15 +22,16 @@ fun RectangleListView(items: List<RectangleItem>) {
         items(items.size) { index ->
             val item = items[index]
             var isVisible by remember { mutableStateOf(item in visibleItems) }
-
-            AnimatedVisibility(
-                visible = isVisible,
-                enter = fadeIn() + expandHorizontally()
-            ) {
-                RectangleItemView(rectangle = item)
-            }
+            if (item.type != RectangleType.DEATH) {
+                AnimatedVisibility(
+                    visible = isVisible,
+                    enter = fadeIn() + expandHorizontally()
+                ) {
+                    RectangleItemView(rectangle = item)
+                }
+            } else RectangleItemView(rectangle = item)
             LaunchedEffect(item) {
-                if (item !in visibleItems && item.type != RectangleType.DEATH) {
+                if (item !in visibleItems) {
                     if (item.type == RectangleType.LIFE) {
                         delay(500)
                     }
