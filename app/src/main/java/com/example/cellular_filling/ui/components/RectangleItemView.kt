@@ -16,80 +16,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.cellular_filling.R
 import com.example.cellular_filling.model.RectangleItem
 import com.example.cellular_filling.model.RectangleType
-import com.example.cellular_filling.ui.theme.ColorAlive1
-import com.example.cellular_filling.ui.theme.ColorAlive2
-import com.example.cellular_filling.ui.theme.ColorDead1
-import com.example.cellular_filling.ui.theme.ColorDead2
-import com.example.cellular_filling.ui.theme.ColorDeath1
-import com.example.cellular_filling.ui.theme.ColorDeath2
-import com.example.cellular_filling.ui.theme.ColorLife1
-import com.example.cellular_filling.ui.theme.ColorLife2
 import com.example.cellular_filling.ui.theme.Typography
+import com.example.cellular_filling.ui.utils.getColorForType
+import com.example.cellular_filling.ui.utils.getPictureForType
+import com.example.cellular_filling.ui.utils.getTextForType
 
-@Composable
-fun getColorForType(type: RectangleType): Brush {
-    return when (type) {
-        RectangleType.ALIVE -> Brush.verticalGradient(
-            colors = listOf(ColorAlive1, ColorAlive2)
-        )
-
-        RectangleType.DEAD -> Brush.verticalGradient(
-            colors = listOf(ColorDead1, ColorDead2)
-        )
-
-        RectangleType.LIFE -> Brush.verticalGradient(
-            colors = listOf(ColorLife1, ColorLife2)
-        )
-
-        RectangleType.DEATH -> Brush.verticalGradient(
-            colors = listOf(ColorDeath1, ColorDeath2)
-        )
-    }
-}
-
-@Composable
-fun getPictureForType(type: RectangleType): Painter {
-    return when (type) {
-        RectangleType.ALIVE -> painterResource(R.drawable.alive)
-        RectangleType.DEAD -> painterResource(R.drawable.dead)
-        else -> painterResource(R.drawable.life)
-    }
-}
-
-@Composable
-fun getTextForType(type: RectangleType): Pair<String, String> {
-    return when (type) {
-        RectangleType.ALIVE -> Pair(
-            stringResource(R.string.alive_title),
-            stringResource(R.string.alive_text)
-        )
-
-        RectangleType.DEAD -> Pair(
-            stringResource(R.string.dead_title),
-            stringResource(R.string.dead_text)
-        )
-
-        RectangleType.LIFE -> Pair(
-            stringResource(R.string.life_title),
-            stringResource(R.string.life_text)
-        )
-
-        RectangleType.DEATH -> Pair(
-            stringResource(R.string.death_title),
-            stringResource(R.string.death_text)
-        )
-    }
-}
 
 @Composable
 fun RectangleItemView(rectangle: RectangleItem) {
@@ -97,7 +33,7 @@ fun RectangleItemView(rectangle: RectangleItem) {
         modifier = Modifier
             .fillMaxWidth()
             .height(72.dp)
-            .padding(start = 16.dp, end = 16.dp)
+            .padding(start = 16.dp, end = 16.dp, bottom = 4.dp)
             .clip(
                 RoundedCornerShape(8.dp)
             )

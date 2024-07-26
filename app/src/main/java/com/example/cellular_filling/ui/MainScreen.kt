@@ -1,4 +1,4 @@
-package com.example.cellular_filling
+package com.example.cellular_filling.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,16 +22,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.cellular_filling.model.RectangleItem
-import com.example.cellular_filling.model.RectangleType
-import com.example.cellular_filling.ui.components.RectangleItemView
+import com.example.cellular_filling.R
+import com.example.cellular_filling.ui.components.RectangleListView
 import com.example.cellular_filling.ui.theme.ButtonColor
 import com.example.cellular_filling.ui.theme.Typography
 import com.example.cellular_filling.ui.theme.MainColor1
 import com.example.cellular_filling.ui.theme.MainColor2
+import com.example.cellular_filling.viewmodel.MainViewModel
 
 @Composable
-fun MainScreen() {
+fun MainScreen(viewModel: MainViewModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -49,13 +48,13 @@ fun MainScreen() {
                 color = Color.White,
                 modifier = Modifier.padding(top = 16.dp, bottom = 22.dp)
             )
-            RectangleItemView(rectangle = RectangleItem(0, RectangleType.LIFE))
+            RectangleListView(items = viewModel.items)
             Row(
                 modifier = Modifier.fillMaxSize(),
                 verticalAlignment = Alignment.Bottom
             ) {
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { viewModel.addItem() },
                     shape = RoundedCornerShape(4.dp),
                     colors =  ButtonDefaults.buttonColors(
                         containerColor = ButtonColor
@@ -79,5 +78,6 @@ fun MainScreen() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewMainScreen() {
-    MainScreen()
+    val viewModel = MainViewModel()
+    MainScreen(viewModel)
 }
