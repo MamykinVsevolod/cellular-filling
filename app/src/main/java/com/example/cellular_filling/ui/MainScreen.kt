@@ -41,7 +41,12 @@ fun MainScreen(viewModel: MainViewModel) {
                 )
             )
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 56.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(
                 text = stringResource(R.string.main_title),
                 style = Typography.bodyMedium,
@@ -49,28 +54,31 @@ fun MainScreen(viewModel: MainViewModel) {
                 modifier = Modifier.padding(top = 16.dp, bottom = 22.dp)
             )
             RectangleListView(items = viewModel.items)
-            Row(
-                modifier = Modifier.fillMaxSize(),
-                verticalAlignment = Alignment.Bottom
+        }
+        Row(
+            modifier = Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.Bottom
+        ) {
+            Button(
+                onClick = { viewModel.addItem() },
+                shape = RoundedCornerShape(4.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = ButtonColor
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(36.dp)
+                    .padding(start = 14.dp, end = 14.dp)
+                    .clip(
+                        RoundedCornerShape(4.dp)
+                    )
             ) {
-                Button(
-                    onClick = { viewModel.addItem() },
-                    shape = RoundedCornerShape(4.dp),
-                    colors =  ButtonDefaults.buttonColors(
-                        containerColor = ButtonColor
-                    ),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(36.dp)
-                        .padding(start = 14.dp, end = 14.dp)
-                        .clip(
-                            RoundedCornerShape(4.dp)
-                        )
-                ) {
-                    Text(text = stringResource(R.string.button), style = Typography.bodyMedium, fontSize = 14.sp)
-                }
+                Text(
+                    text = stringResource(R.string.button),
+                    style = Typography.bodyMedium,
+                    fontSize = 14.sp
+                )
             }
-
         }
     }
 }
