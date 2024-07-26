@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -54,6 +56,10 @@ fun MainScreen() {
             ) {
                 Button(
                     onClick = { /*TODO*/ },
+                    shape = RoundedCornerShape(4.dp),
+                    colors =  ButtonDefaults.buttonColors(
+                        containerColor = ButtonColor
+                    ),
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(36.dp)
@@ -61,10 +67,8 @@ fun MainScreen() {
                         .clip(
                             RoundedCornerShape(4.dp)
                         )
-                        .background(ButtonColor),
-
                 ) {
-                    //Text(text = stringResource(R.string.button), style = Typography.bodyMedium, fontSize = 14.sp)
+                    Text(text = stringResource(R.string.button), style = Typography.bodyMedium, fontSize = 14.sp)
                 }
             }
 
