@@ -1,5 +1,6 @@
 package com.example.cellular_filling.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import com.example.cellular_filling.model.RectangleItem
@@ -12,6 +13,7 @@ class MainViewModel : ViewModel() {
     var items = mutableStateListOf<RectangleItem>()
 
     fun addItem() {
+        Log.d("MyListView", items.size.toString())
         var type = getRandomRectangleType()
         when (type) {
             RectangleType.ALIVE -> {
