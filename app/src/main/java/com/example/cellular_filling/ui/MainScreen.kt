@@ -31,7 +31,7 @@ fun MainScreen(viewModel: MainViewModel) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 56.dp),
+                .padding(bottom = 72.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             MyTitle()

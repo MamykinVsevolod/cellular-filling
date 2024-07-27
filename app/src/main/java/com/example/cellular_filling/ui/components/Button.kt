@@ -35,8 +35,8 @@ fun MyButton(viewModel: MainViewModel) {
             ),
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(start = 14.dp, end = 14.dp, bottom = 16.dp)
                 .height(36.dp)
-                .padding(start = 14.dp, end = 14.dp)
                 .clip(
                     RoundedCornerShape(4.dp)
                 )
