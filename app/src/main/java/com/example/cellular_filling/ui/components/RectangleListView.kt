@@ -10,6 +10,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import com.example.cellular_filling.model.RectangleItem
 import com.example.cellular_filling.model.RectangleType
@@ -18,7 +19,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun RectangleListView(items: List<RectangleItem>) {
     Log.d("MyListRec", items.size.toString())
-    val visibleItems = remember { mutableSetOf<RectangleItem>() }
+    val visibleItems = rememberSaveable{ mutableSetOf<RectangleItem>() }
     LazyColumn() {
         items(items.size) { index ->
             val item = items[index]
