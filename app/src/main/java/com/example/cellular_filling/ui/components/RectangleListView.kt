@@ -41,9 +41,6 @@ fun RectangleListView(items: List<RectangleItem>) {
             } else RectangleItemView(rectangle = item)
             LaunchedEffect(item) {
                 if (item.id !in visibleItemIds) {
-                    if (item.type == RectangleType.LIFE) {
-                        delay(0)
-                    }
                     isVisible = true
                     visibleItemIds.add(item.id)
                 } else {
