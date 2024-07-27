@@ -30,13 +30,29 @@
 
 ```plaintext
 app/
-├── manifests
-    └── AndroidManifest.xml
+├── manifests/
+│   └── AndroidManifest.xml
 ├── java/            
 │   ├── com.example.cellular_filling/  
-│       └── model
-            ├── RectangleItem.kt       
-            └── RectangleType.kt     
+        ├── model/
+        │   ├── RectangleItem.kt       
+        │   └── RectangleType.kt
+        ├── ui/
+            ├── components/
+            │   ├── Button.kt       
+            │   ├── RectangleItemView.kt
+            │   ├── RectangleListView.kt
+            │   └── Title.kt
+            ├── components/
+            │   ├── Button.kt       
+            │   ├── RectangleItemView.kt
+            │   ├── RectangleListView.kt
+            │   └── Title.kt
+            ├── theme/
+                ├── Color.kt
+                ├── Theme.kt
+                └── Type.kt
+                
 └── program2/            
     ├── CMakeLists.txt        
     └── main.cpp         
