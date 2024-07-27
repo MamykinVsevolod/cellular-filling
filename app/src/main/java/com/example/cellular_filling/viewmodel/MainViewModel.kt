@@ -1,6 +1,5 @@
 package com.example.cellular_filling.viewmodel
 
-import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import com.example.cellular_filling.model.RectangleItem
@@ -14,8 +13,19 @@ class MainViewModel : ViewModel() {
     private var counterOfDead = 0
 
     fun addItem() {
-        Log.d("MyListView_1", items.size.toString())
-        var type = getRandomRectangleType()
+        val type = getRandomRectangleType()
+        updateCounters(type)
+
+        addRectangleItem(type)
+
+        if (shouldAddLifeItem()) {
+            addLifeRectangleItem()
+        } else if (shouldChangeLastLifeToDeath()) {
+            changeLastLifeToDeath()
+        }
+    }
+
+    private fun updateCounters(type: RectangleType) {
         when (type) {
             RectangleType.ALIVE -> {
                 counterOfAlive++
@@ -29,31 +39,34 @@ class MainViewModel : ViewModel() {
 
             else -> {}
         }
-        Log.d("MyListView_2", items.size.toString())
-        if (counterOfAlive == 3) {
-            val newItem = RectangleItem(id = nextId, type = type)
-            items.add(newItem)
-            nextId++
-            type = RectangleType.LIFE
-            counterOfAlive = 0
-            val newItemLife = RectangleItem(id = nextId, type = type)
-            items.add(newItemLife)
-            nextId++
-        } else if (counterOfDead == 3) {
-            val newItem = RectangleItem(id = nextId, type = type)
-            items.add(newItem)
-            nextId++
-            val lastLifeIndex = items.indexOfLast { it.type == RectangleType.LIFE }
-            if (lastLifeIndex != -1) {
-                items[lastLifeIndex] = items[lastLifeIndex].copy(type = RectangleType.DEATH)
-            }
-        } else {
-            val newItem = RectangleItem(id = nextId, type = type)
-            items.add(newItem)
-            nextId++
-        }
+    }
 
-        Log.d("MyListView_3", items.size.toString())
+    private fun shouldAddLifeItem(): Boolean {
+        return counterOfAlive == 3
+    }
+
+    private fun addRectangleItem(type: RectangleType) {
+        val newItem = RectangleItem(id = nextId, type = type)
+        items.add(newItem)
+        nextId++
+    }
+
+    private fun addLifeRectangleItem() {
+        counterOfAlive = 0
+        val newItemLife = RectangleItem(id = nextId, type = RectangleType.LIFE)
+        items.add(newItemLife)
+        nextId++
+    }
+
+    private fun shouldChangeLastLifeToDeath(): Boolean {
+        return counterOfDead == 3
+    }
+
+    private fun changeLastLifeToDeath() {
+        val lastLifeIndex = items.indexOfLast { it.type == RectangleType.LIFE }
+        if (lastLifeIndex != -1) {
+            items[lastLifeIndex] = items[lastLifeIndex].copy(type = RectangleType.DEATH)
+        }
     }
 
     private fun getRandomRectangleType(): RectangleType {

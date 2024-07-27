@@ -1,6 +1,5 @@
 package com.example.cellular_filling.ui.components
 
-import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -18,7 +17,6 @@ import com.example.cellular_filling.model.RectangleType
 
 @Composable
 fun RectangleListView(items: List<RectangleItem>) {
-    Log.d("MyListRec", items.size.toString())
     val visibleItemIds = rememberSaveable { mutableSetOf<Long>() }
     val listState = rememberLazyListState()
     LaunchedEffect(items.size) {

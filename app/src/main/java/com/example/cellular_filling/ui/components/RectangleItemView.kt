@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,10 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.cellular_filling.model.RectangleItem
-import com.example.cellular_filling.model.RectangleType
 import com.example.cellular_filling.ui.theme.Typography
 import com.example.cellular_filling.ui.utils.getColorForType
 import com.example.cellular_filling.ui.utils.getPictureForType
@@ -42,7 +39,7 @@ fun RectangleItemView(rectangle: RectangleItem) {
             .background(color = Color.White),
         contentAlignment = Alignment.CenterStart
     ) {
-        Row (verticalAlignment = Alignment.CenterVertically){
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Box(
                 modifier = Modifier
                     .padding(start = 16.dp)
@@ -54,13 +51,14 @@ fun RectangleItemView(rectangle: RectangleItem) {
                 Image(
                     painter = getPictureForType(rectangle.type),
                     contentDescription = "Picture",
-                    modifier = Modifier.size(20.dp).fillMaxSize(),
+                    modifier = Modifier
+                        .size(20.dp)
+                        .fillMaxSize(),
                     alignment = Alignment.Center
                 )
             }
             Column(
                 modifier = Modifier
-                    //.fillMaxHeight()
                     .padding(start = 16.dp),
                 verticalArrangement = Arrangement.Center
             ) {
@@ -70,16 +68,4 @@ fun RectangleItemView(rectangle: RectangleItem) {
             }
         }
     }
-
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewRectangleItemView() {
-    RectangleItemView(
-        rectangle = RectangleItem(
-            id = 1,
-            type = RectangleType.DEAD
-        )
-    )
 }
