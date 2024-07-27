@@ -17,7 +17,7 @@ import com.example.cellular_filling.model.RectangleType
 
 @Composable
 fun RectangleListView(items: List<RectangleItem>) {
-    val visibleItemIds = rememberSaveable { mutableSetOf<Long>() }
+    val visibleItemIds = rememberSaveable { mutableStateOf(mutableSetOf<Long>())  }
     val listState = rememberLazyListState()
     LaunchedEffect(items.size) {
         if (items.isNotEmpty()) {
@@ -25,9 +25,9 @@ fun RectangleListView(items: List<RectangleItem>) {
         }
     }
     LazyColumn(state = listState) {
-        items(items.size) { index ->
+        items(items.size, key = { items[it].id }) { index ->
             val item = items[index]
-            var isVisible by remember { mutableStateOf(item.id in visibleItemIds) }
+            var isVisible by remember { mutableStateOf(item.id in visibleItemIds.value) }
             if (item.type != RectangleType.DEATH) {
                 AnimatedVisibility(
                     visible = isVisible,
@@ -37,9 +37,9 @@ fun RectangleListView(items: List<RectangleItem>) {
                 }
             } else RectangleItemView(rectangle = item)
             LaunchedEffect(item) {
-                if (item.id !in visibleItemIds) {
+                if (item.id !in visibleItemIds.value) {
                     isVisible = true
-                    visibleItemIds.add(item.id)
+                    visibleItemIds.value.add(item.id)
                 } else {
                     isVisible = true
                 }
