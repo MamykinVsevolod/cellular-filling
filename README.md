@@ -33,35 +33,35 @@
 ```plaintext
 app/
 ├── manifests/
-│   └── AndroidManifest.xml
+│    └── AndroidManifest.xml
 ├── java/            
-│   ├── com.example.cellular_filling/  
-        ├── model/
-        │   ├── RectangleItem.kt       
-        │   └── RectangleType.kt
-        ├── ui/
-        │   ├── components/
-        │   │   ├── Button.kt       
-        │   │   ├── RectangleItemView.kt
-        │   │   ├── RectangleListView.kt
-        │   │   └── Title.kt
-        │   ├── components/
-        │   │   ├── Button.kt       
-        │   │   ├── RectangleItemView.kt
-        │   │   ├── RectangleListView.kt
-        │   │   └── Title.kt
-        │   ├── theme/
-        │   │   ├── Color.kt
-        │   │   ├── Theme.kt
-        │   │   └── Type.kt
-        │   ├── utils/
-        │   │    ├── ColorUtils.kt
-        │   │    ├── PictureUtils.kt
-        │   │    ├── TextUtils.kt
-        │   └── MainScreen.kt
-        ├──
-└── program2/            
-    ├── CMakeLists.txt        
-    └── main.cpp         
+│    ├── com.example.cellular_filling/  
+│        ├── model/
+│        │   ├── RectangleItem.kt       
+│        │   └── RectangleType.kt
+│        ├── ui/
+│        │   ├── components/
+│        │   │   ├── Button.kt       
+│        │   │   ├── RectangleItemView.kt
+│        │   │   ├── RectangleListView.kt
+│        │   │   └── Title.kt
+│        │   ├── components/
+│        │   │   ├── Button.kt       
+│        │   │   ├── RectangleItemView.kt
+│        │   │   ├── RectangleListView.kt
+│        │   │   └── Title.kt
+│        │   ├── theme/
+│        │   │   ├── Color.kt
+│        │   │   ├── Theme.kt
+│        │   │   └── Type.kt
+│        │   ├── utils/
+│        │   │    ├── ColorUtils.kt
+│        │   │    ├── PictureUtils.kt
+│        │   │    ├── TextUtils.kt
+│        │   └── MainScreen.kt
+│        ├── viewmodel/
+│        │   └── MainViewModel.kt
+│        └── MainActivity.kt
+└── res/      
 ```
 
