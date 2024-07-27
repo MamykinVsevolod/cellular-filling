@@ -22,7 +22,7 @@ import com.example.cellular_filling.ui.theme.Typography
 import com.example.cellular_filling.viewmodel.MainViewModel
 
 @Composable
-fun myButton(viewModel: MainViewModel) {
+fun MyButton(viewModel: MainViewModel) {
     Row(
         modifier = Modifier.fillMaxSize(),
         verticalAlignment = Alignment.Bottom

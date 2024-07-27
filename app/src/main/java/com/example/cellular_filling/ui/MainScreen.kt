@@ -9,11 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.cellular_filling.ui.components.RectangleListView
-import com.example.cellular_filling.ui.components.myButton
-import com.example.cellular_filling.ui.components.myTitle
+import com.example.cellular_filling.ui.components.MyButton
+import com.example.cellular_filling.ui.components.MyTitle
 import com.example.cellular_filling.ui.theme.MainColor1
 import com.example.cellular_filling.ui.theme.MainColor2
 import com.example.cellular_filling.viewmodel.MainViewModel
@@ -35,16 +34,9 @@ fun MainScreen(viewModel: MainViewModel) {
                 .padding(bottom = 56.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            myTitle()
+            MyTitle()
             RectangleListView(items = viewModel.items)
         }
-        myButton(viewModel = viewModel)
+        MyButton(viewModel = viewModel)
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewMainScreen() {
-    val viewModel = MainViewModel()
-    MainScreen(viewModel)
 }

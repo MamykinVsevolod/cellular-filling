@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -27,7 +28,6 @@ import com.example.cellular_filling.ui.theme.Typography
 import com.example.cellular_filling.ui.utils.getColorForType
 import com.example.cellular_filling.ui.utils.getPictureForType
 import com.example.cellular_filling.ui.utils.getTextForType
-
 
 @Composable
 fun RectangleItemView(rectangle: RectangleItem) {
@@ -54,7 +54,7 @@ fun RectangleItemView(rectangle: RectangleItem) {
                 Image(
                     painter = getPictureForType(rectangle.type),
                     contentDescription = "Picture",
-                    modifier = Modifier.size(20.dp),
+                    modifier = Modifier.size(20.dp).fillMaxSize(),
                     alignment = Alignment.Center
                 )
             }

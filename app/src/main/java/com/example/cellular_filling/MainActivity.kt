@@ -6,18 +6,20 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.SavedStateViewModelFactory
+import androidx.lifecycle.ViewModelProvider
 import com.example.cellular_filling.ui.MainScreen
 import com.example.cellular_filling.ui.theme.CellularfillingTheme
 import com.example.cellular_filling.viewmodel.MainViewModel
 
 class MainActivity : ComponentActivity() {
+        private val viewModel: MainViewModel by lazy {
+        val savedStateViewModelFactory = SavedStateViewModelFactory(application, this)
+        ViewModelProvider(this, savedStateViewModelFactory).get(MainViewModel::class.java)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModel: MainViewModel = MainViewModel()
         setContent {
             CellularfillingTheme {
                 Surface(

@@ -10,6 +10,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import com.example.cellular_filling.model.RectangleItem
 import com.example.cellular_filling.model.RectangleType
@@ -18,11 +19,11 @@ import kotlinx.coroutines.delay
 @Composable
 fun RectangleListView(items: List<RectangleItem>) {
     Log.d("MyListRec", items.size.toString())
-    val visibleItems = remember { mutableSetOf<RectangleItem>() }
+    val visibleItemIds = rememberSaveable { mutableSetOf<Long>() }
     LazyColumn() {
         items(items.size) { index ->
             val item = items[index]
-            var isVisible by remember { mutableStateOf(item in visibleItems) }
+            var isVisible by remember { mutableStateOf(item.id in visibleItemIds) }
             if (item.type != RectangleType.DEATH) {
                 AnimatedVisibility(
                     visible = isVisible,
@@ -32,12 +33,12 @@ fun RectangleListView(items: List<RectangleItem>) {
                 }
             } else RectangleItemView(rectangle = item)
             LaunchedEffect(item) {
-                if (item !in visibleItems) {
+                if (item.id !in visibleItemIds) {
                     if (item.type == RectangleType.LIFE) {
                         delay(500)
                     }
                     isVisible = true
-                    visibleItems.add(item)
+                    visibleItemIds.add(item.id)
                 } else {
                     isVisible = true
                 }
