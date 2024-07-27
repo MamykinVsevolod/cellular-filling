@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -54,7 +55,7 @@ fun RectangleItemView(rectangle: RectangleItem) {
                 Image(
                     painter = getPictureForType(rectangle.type),
                     contentDescription = "Picture",
-                    modifier = Modifier.size(20.dp),
+                    modifier = Modifier.size(20.dp).fillMaxSize(),
                     alignment = Alignment.Center
                 )
             }

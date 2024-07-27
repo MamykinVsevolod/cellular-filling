@@ -11,17 +11,23 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 class MainViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
+
     private val ITEMS_KEY = "items_key"
 
-    // Инициализация списка с восстановлением данных, если таковые имеются
     private val _items = mutableStateListOf<RectangleItem>().apply {
-        restoreItems()
+        restoreItems() // Восстановление данных при создании ViewModel
     }
     val items: List<RectangleItem> get() = _items
 
     private var nextId: Long = _items.maxOfOrNull { it.id }?.plus(1) ?: 1
     private var counterOfAlive = 0
     private var counterOfDead = 0
+
+    private fun getItemsAsList(): List<RectangleItem> = _items.toList()
+    private fun setItemsFromList(items: List<RectangleItem>) {
+        _items.clear()
+        _items.addAll(items)
+    }
 
     fun addItem() {
         Log.d("MyListView_1", items.size.toString())
@@ -31,10 +37,12 @@ class MainViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel(
                 counterOfAlive++
                 counterOfDead = 0
             }
+
             RectangleType.DEAD -> {
                 counterOfDead++
                 counterOfAlive = 0
             }
+
             else -> {}
         }
         Log.d("MyListView_2", items.size.toString())
@@ -64,11 +72,11 @@ class MainViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel(
         Log.d("MyListView_3", items.size.toString())
         try {
             // Сохранение элементов в SavedStateHandle как JSON
-            val json = Json.encodeToString(_items)
+            val json = Json.encodeToString(getItemsAsList())
             Log.d("MyListView_4", "Serialized JSON: $json")
             savedStateHandle[ITEMS_KEY] = json
         } catch (e: Exception) {
-            Log.e("MyListView_Error", "Error serializing items", e)
+            Log.e("MyListView_Error_1", "Error serializing items", e)
         }
     }
 
@@ -76,11 +84,11 @@ class MainViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel(
         val json = savedStateHandle.get<String>(ITEMS_KEY)
         json?.let {
             try {
-                _items.clear()
-                _items.addAll(Json.decodeFromString(it))
+                val items = Json.decodeFromString<List<RectangleItem>>(it)
+                setItemsFromList(items)
                 Log.d("MyListView_Restore", "Restored items: ${_items.size}")
             } catch (e: Exception) {
-                Log.e("MyListView_Error", "Error restoring items", e)
+                Log.e("MyListView_Error_2", "Error restoring items", e)
             }
         }
     }
