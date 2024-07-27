@@ -11,7 +11,7 @@ import com.example.cellular_filling.R
 import com.example.cellular_filling.ui.theme.Typography
 
 @Composable
-fun myTitle() {
+fun MyTitle() {
     Text(
         text = stringResource(R.string.main_title),
         style = Typography.bodyMedium,
