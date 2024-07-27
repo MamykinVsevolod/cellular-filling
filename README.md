@@ -55,9 +55,9 @@ app/
 │        │   │   ├── Theme.kt
 │        │   │   └── Type.kt
 │        │   ├── utils/
-│        │   │    ├── ColorUtils.kt
-│        │   │    ├── PictureUtils.kt
-│        │   │    ├── TextUtils.kt
+│        │   │   ├── ColorUtils.kt
+│        │   │   ├── PictureUtils.kt
+│        │   │   ├── TextUtils.kt
 │        │   └── MainScreen.kt
 │        ├── viewmodel/
 │        │   └── MainViewModel.kt
