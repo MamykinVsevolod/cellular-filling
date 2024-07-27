@@ -14,7 +14,7 @@ import com.example.cellular_filling.ui.theme.CellularfillingTheme
 import com.example.cellular_filling.viewmodel.MainViewModel
 
 class MainActivity : ComponentActivity() {
-    private val viewModel: MainViewModel by lazy {
+        private val viewModel: MainViewModel by lazy {
         val savedStateViewModelFactory = SavedStateViewModelFactory(application, this)
         ViewModelProvider(this, savedStateViewModelFactory).get(MainViewModel::class.java)
     }

@@ -29,7 +29,6 @@ import com.example.cellular_filling.ui.utils.getColorForType
 import com.example.cellular_filling.ui.utils.getPictureForType
 import com.example.cellular_filling.ui.utils.getTextForType
 
-
 @Composable
 fun RectangleItemView(rectangle: RectangleItem) {
     Box(
