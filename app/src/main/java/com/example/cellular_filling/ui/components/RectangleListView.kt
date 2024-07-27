@@ -3,7 +3,6 @@ package com.example.cellular_filling.ui.components
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -16,7 +15,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import com.example.cellular_filling.model.RectangleItem
 import com.example.cellular_filling.model.RectangleType
-import kotlinx.coroutines.delay
 
 @Composable
 fun RectangleListView(items: List<RectangleItem>) {
@@ -42,9 +40,6 @@ fun RectangleListView(items: List<RectangleItem>) {
             } else RectangleItemView(rectangle = item)
             LaunchedEffect(item) {
                 if (item.id !in visibleItemIds) {
-//                    if (index == 0) {
-//                        delay(300)
-//                    }
                     isVisible = true
                     visibleItemIds.add(item.id)
                 } else {
