@@ -40,25 +40,26 @@ app/
         │   ├── RectangleItem.kt       
         │   └── RectangleType.kt
         ├── ui/
-            ├── components/
-            │   ├── Button.kt       
-            │   ├── RectangleItemView.kt
-            │   ├── RectangleListView.kt
-            │   └── Title.kt
-            ├── components/
-            │   ├── Button.kt       
-            │   ├── RectangleItemView.kt
-            │   ├── RectangleListView.kt
-            │   └── Title.kt
-            ├── theme/
-            │   ├── Color.kt
-            │   ├── Theme.kt
-            │   └── Type.kt
-            ├── utils/
-            │    ├── ColorUtils.kt
-            │    ├── PictureUtils.kt
-            │    ├── TextUtils.kt
-            └── MainScreen.kt    
+        │   ├── components/
+        │   │   ├── Button.kt       
+        │   │   ├── RectangleItemView.kt
+        │   │   ├── RectangleListView.kt
+        │   │   └── Title.kt
+        │   ├── components/
+        │   │   ├── Button.kt       
+        │   │   ├── RectangleItemView.kt
+        │   │   ├── RectangleListView.kt
+        │   │   └── Title.kt
+        │   ├── theme/
+        │   │   ├── Color.kt
+        │   │   ├── Theme.kt
+        │   │   └── Type.kt
+        │   ├── utils/
+        │   │    ├── ColorUtils.kt
+        │   │    ├── PictureUtils.kt
+        │   │    ├── TextUtils.kt
+        │   └── MainScreen.kt
+        ├──
 └── program2/            
     ├── CMakeLists.txt        
     └── main.cpp         
